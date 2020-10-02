@@ -6,10 +6,10 @@ void add_item_to_end_of_linked_list(LinkedListNode *&head, int data)
    int linkedListLength{get_linked_list_length(head)};
    if(linkedListLength < 1)
    {
+       create_linked_list_head_or_node(head, 0);
        return;
    }
-   else
-   {
+
        LinkedListNode* currentNode{head};
        LinkedListNode* newNode{nullptr};
        while(linkedListLength > 1)
@@ -19,12 +19,11 @@ void add_item_to_end_of_linked_list(LinkedListNode *&head, int data)
        }
        create_linked_list_head_or_node(newNode, data);
        assign_nodeX_to_point_to_node_y(currentNode, newNode);
-   }
 }
 
-TEST(AddItemToEndOfList, WhenAddingToTheEndOfAListThatDoesNotHaveAHead_ExpectListLengthNotToChange)
+TEST(AddItemToEndOfList, WhenAddingToTheEndOfAListThatDoesNotHaveAHeadWithMemory_ExpectHeadToGetMemoryAndLengthOf2)
 {
-    int expectedLinkedListLength = {0};
+    int expectedLinkedListLength = {2};
     int linkedListLength = {0};
 
     LinkedListNode* head{nullptr};

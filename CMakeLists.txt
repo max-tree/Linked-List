@@ -22,6 +22,8 @@ add_executable(${TEST_NAME}
     AddItemToEndOfList_UnitTest.cpp
     GetLinkedListLength_UnitTest.cpp
     AssignNodeXToPointToNodeY_UnitTest.cpp
+    AddItemToBeginningOfList_UnitTest.cpp
+    ConvertLinkedListToString.cpp
     )
 
 target_link_libraries(${TEST_NAME}  ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} ${PROJECT_NAME})
