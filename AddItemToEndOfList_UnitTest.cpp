@@ -1,7 +1,7 @@
 #include "LinkedList.hpp"
 #include "gtest/gtest.h"
 
-void add_item_to_end_of_linked_list(LinkedListNode *&head, int data)
+void add_item_to_end_of_list(LinkedListNode *&head, int data)
 {
    int linkedListLength{get_linked_list_length(head)};
    if(linkedListLength < 1)
@@ -27,7 +27,7 @@ TEST(AddItemToEndOfList, WhenAddingToTheEndOfAListThatDoesNotHaveAHeadWithMemory
     int linkedListLength = {0};
 
     LinkedListNode* head{nullptr};
-    add_item_to_end_of_linked_list(head, 0);
+    add_item_to_end_of_list(head, 0);
     linkedListLength = get_linked_list_length(head);
     EXPECT_EQ(expectedLinkedListLength, linkedListLength);
     delete head;
@@ -41,7 +41,7 @@ TEST(AddItemToEndOfList, WhenAddingToTheEndOfAListThatIsJustAHead_ExpectCorrectR
 
     LinkedListNode* head{nullptr};
     create_linked_list_head_or_node(head, 0);
-    add_item_to_end_of_linked_list(head, 0);
+    add_item_to_end_of_list(head, 0);
     linkedListLength = get_linked_list_length(head);
     EXPECT_EQ(expectedLinkedListLength, linkedListLength);
      delete head;
@@ -63,7 +63,7 @@ TEST(AddItemToEndOfList, WhenAddingToTheEndOfAListOfLength4_ExpectLengthOfListTo
     assign_nodeX_to_point_to_node_y(head, second);
     assign_nodeX_to_point_to_node_y(second, third);
 
-    add_item_to_end_of_linked_list(head, 0);
+    add_item_to_end_of_list(head, 0);
     linkedListLength = get_linked_list_length(head);
     EXPECT_EQ(expectedLinkedListLength, linkedListLength);
      delete head;

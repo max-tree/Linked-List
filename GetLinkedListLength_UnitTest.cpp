@@ -11,11 +11,11 @@ int get_linked_list_length(LinkedListNode* &head)
     }
     LinkedListNode* currentNode{head};
 
-        while(currentNode->nextNode != nullptr)
-        {
-            linkedListLength++;
-            currentNode = currentNode->nextNode;
-        }
+    while(currentNode->nextNode != nullptr)
+    {
+        linkedListLength++;
+        currentNode = currentNode->nextNode;
+    }
     return linkedListLength;
 }
 

@@ -24,6 +24,8 @@ add_executable(${TEST_NAME}
     AssignNodeXToPointToNodeY_UnitTest.cpp
     AddItemToBeginningOfList_UnitTest.cpp
     ConvertLinkedListToString.cpp
+    ClearLinkedList_UnitTest.cpp
+    RemoveAllInstancesOfItemFromList.cpp
     )
 
 target_link_libraries(${TEST_NAME}  ${GTEST_LIBRARIES} ${GTEST_MAIN_LIBRARIES} ${PROJECT_NAME})

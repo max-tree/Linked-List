@@ -1,45 +1,36 @@
 #include "gtest/gtest.h"
 #include "LinkedList.hpp"
 
-//LinkedListNode* create_linked_list()
-//{
-//    LinkedListNode *head{nullptr};
-//    add_item_to_beginning_of_list(head,3);
-//    add_item_to_beginning_of_list(head,6);
-//    add_item_to_end_of_list(head,4);
-//    add_item_to_end_of_list(head,1);
-//    add_item_to_beginning_of_list(head,8);
-//    add_item_to_end_of_list(head,1);
-//    add_item_to_end_of_list(head,9);
-//    add_item_to_end_of_list(head,7);
-//    add_item_to_beginning_of_list(head,5);
-//    return head;
-//}
+LinkedListNode* create_linked_list()
+{
+    LinkedListNode *head{nullptr};
+    add_item_to_beginning_of_list(head,3);
+    add_item_to_beginning_of_list(head,6);
+    add_item_to_end_of_list(head,4);
+    add_item_to_end_of_list(head,1);
+    add_item_to_beginning_of_list(head,8);
+    add_item_to_end_of_list(head,1);
+    add_item_to_end_of_list(head,9);
+    add_item_to_end_of_list(head,7);
+    add_item_to_beginning_of_list(head,5);
+    return head;
+}
 
-//LinkedListNode* create_another_linked_list()
-//{
-//    LinkedListNode *head{nullptr};
-//    add_item_to_end_of_list(head,4);
-//    add_item_to_beginning_of_list(head,8);
-//    return head;
-//}
-//TEST(AcceptanceTest,WhenCreatingALinkedList_ExpectCorrectResults)
-//{
-//    LinkedListNode *head = create_linked_list();
+LinkedListNode* create_another_linked_list()
+{
+    LinkedListNode *head{nullptr};
+    add_item_to_end_of_list(head,4);
+    add_item_to_beginning_of_list(head,8);
+    return head;
+}
 
-//    std::string expectedResult{"(5 8 6 3 4 1 1 9 7)"};
-//    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
-//    clear_linked_list(head);
-//}
-
-//TEST(AcceptanceTest,WhenCreatingAnotherLinkedList_ExpectCorrectResults)
-//{
-//    LinkedListNode *head = create_another_linked_list();
-
-//    std::string expectedResult{"(8 4)"};
-//    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
-//    clear_linked_list(head);
-//}
+TEST(AcceptanceTest,WhenCreatingAnotherLinkedList_ExpectCorrectResults)
+{
+    LinkedListNode *head = create_another_linked_list();
+    std::string expectedResult{"(8 4)"};
+    EXPECT_EQ(expectedResult,convert_linked_list_to_string(head));
+    clear_linked_list(head);
+}
 
 //TEST(AcceptanceTest,WhenModifyingAnEmptyLinkedList_ExpectCorrectResults)
 //{
