@@ -1,35 +1,13 @@
 #include "LinkedList.hpp"
 #include "gtest/gtest.h"
 
-std::string convert_linked_list_to_string(LinkedListNode* head)
-{
-    std::string listToString{NULL};
-    int listLength{get_linked_list_length(head)};
-    LinkedListNode* currentNode{nullptr};
-    currentNode = head;
-    listToString.pop_back();
-    listToString.push_back('(');
-    if(listLength > 1)
-    {
-        while(listLength > 1)
-        {
-            currentNode = currentNode->nextNode;
-            listToString.push_back(currentNode->item + '0');
-            listToString.push_back(' ');
-            listLength--;
-        }
-        listToString.pop_back();
-    }
-    listToString.push_back(')');
-    return listToString;
-
-}
-
 TEST(ConvertLinkedListToString, WhenLinkedListIsOnlyAHead_ExpectNothing)
 {
     LinkedListNode* head{nullptr};
-    create_linked_list_head_or_node(head, 0);
     std::string result{"()"};
+
+    create_linked_list_head_or_node(head, 0);
+
     EXPECT_EQ(result,convert_linked_list_to_string(head));
 
 }
