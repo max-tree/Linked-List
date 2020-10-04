@@ -1,5 +1,5 @@
-#ifndef MYLIBRARY_HPP
-#define MYLIBRARY_HPP
+#ifndef LINKEDLIST_HPP
+#define LINKEDLIST_HPP
 
 #include <iostream>
 #include <string>
