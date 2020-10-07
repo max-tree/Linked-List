@@ -5,10 +5,9 @@ TEST(AddItemToBeginningOfList, WhenAddingToTheBeginningOfAListThatDoesNotHaveAHe
 {
     int expectedLinkedListLength = {2};
     int linkedListLength = {0};
-    LinkedListNode* head{nullptr};
-
-    add_item_to_beginning_of_list(head, 0);
-    linkedListLength = get_linked_list_length(head);
+    LinkedList linkedList;
+    linkedList.add_item_to_beginning_of_list(0);
+    linkedListLength = linkedList.get_linked_list_length();
 
     EXPECT_EQ(expectedLinkedListLength, linkedListLength);
 }
@@ -17,15 +16,15 @@ TEST(AddItemToBeginningOfList, WhenAddingToTheBeginningOfAListThatHasAHeadWithMe
 {
     int expectedLinkedListLength = {2};
     int linkedListLength = {0};
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
 
-    create_linked_list_head_or_node(head, 0);
+    linkedList.create_linked_list_head(0);
 
-    add_item_to_beginning_of_list(head, 0);
-    linkedListLength = get_linked_list_length(head);
+    linkedList.add_item_to_beginning_of_list(0);
+    linkedListLength = linkedList.get_linked_list_length();
 
     EXPECT_EQ(expectedLinkedListLength, linkedListLength);
-    delete head;
+    linkedList.~LinkedList();
 }
 
 TEST(AddItemToBeginningOfList, WhenAddingToTheBeginningOfAListWithANode_ExpectListLengthToIncreaseByOne)
@@ -33,18 +32,18 @@ TEST(AddItemToBeginningOfList, WhenAddingToTheBeginningOfAListWithANode_ExpectLi
     int expectedLinkedListLength = {3};
     int linkedListLength = {0};
 
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
     LinkedListNode* nodeX{nullptr};
 
-    create_linked_list_head_or_node(head, 0);
-    create_linked_list_head_or_node(nodeX, 0);
+    linkedList.create_linked_list_head(0);
+    LLN::create_linked_list_node(nodeX, 0);
 
-    assign_nodeX_to_point_to_node_y(head, nodeX);
+    linkedList.assign_head_to_point_to_node_y(nodeX);//How can I fix this? I want to be able to pass either the head of any LinkedListNode
 
-    add_item_to_beginning_of_list(head, 0);
-    linkedListLength = get_linked_list_length(head);
+    linkedList.add_item_to_beginning_of_list(0);
+    linkedListLength = linkedList.get_linked_list_length();
 
     EXPECT_EQ(expectedLinkedListLength, linkedListLength);
-    delete head;
+    linkedList.~LinkedList();
     delete nodeX;
 }

@@ -3,32 +3,32 @@
 
 TEST(ClearLinkedList, WhenLinkedListIsAHeadWithNoMemory_ExpectListLengthOfZero)
 {
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
     LinkedListNode* expectedResult{nullptr};
 
-    clear_linked_list(head);
+    linkedList.clear_linked_list();
 
-    EXPECT_EQ(expectedResult, head);
+    EXPECT_EQ(expectedResult, linkedList.getHeadAddress());
 }
 
 TEST(ClearLinkedList, WhenLinkedListIsAHeadWithMemory_ExpectListLengthOfZero)
 {
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
     LinkedListNode* expectedResult{nullptr};
 
-    create_linked_list_head_or_node(head, 0);
-    clear_linked_list(head);
+    linkedList.create_linked_list_head(0);
+    linkedList.clear_linked_list();
 
-    EXPECT_EQ(expectedResult, head);
+    EXPECT_EQ(expectedResult, linkedList.getHeadAddress());
 }
 
 TEST(ClearLinkedList, WhenLinkedListIsAHeadWithOneNode_ExpectListLengthOfZero)
 {
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
     LinkedListNode* expectedResult{nullptr};
 
-    create_linked_list_head_or_node(head, 0);
-    clear_linked_list(head);
+    linkedList.create_linked_list_head(0);
+    linkedList.clear_linked_list();
 
-    EXPECT_EQ(expectedResult, head);
+    EXPECT_EQ(expectedResult, linkedList.getHeadAddress());
 }

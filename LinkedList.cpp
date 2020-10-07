@@ -1,12 +1,22 @@
 #include "LinkedList.hpp"
 
-int get_linked_list_length(LinkedListNode* &head)
+LinkedList::LinkedList()
+{
+    head = nullptr;
+}
+
+LinkedList::~LinkedList()
+{
+    clear_linked_list();
+}
+
+int LinkedList::get_linked_list_length()
 {
     int linkedListLength{1};
 
     if(head == nullptr)
     {
-        create_linked_list_head_or_node(head, 0);
+        create_linked_list_head(0);
     }
 
     LinkedListNode* currentNode{head};
@@ -19,10 +29,10 @@ int get_linked_list_length(LinkedListNode* &head)
     return linkedListLength;
 }
 
-std::string convert_linked_list_to_string(LinkedListNode* head)
+std::string LinkedList::convert_linked_list_to_string()
 {
     std::string listToString{NULL};
-    int listLength{get_linked_list_length(head)};
+    int listLength{get_linked_list_length()};
     LinkedListNode* currentNode{nullptr};
 
     currentNode = head;
@@ -45,36 +55,36 @@ std::string convert_linked_list_to_string(LinkedListNode* head)
     return listToString;
 }
 
-void add_item_to_beginning_of_list(LinkedListNode* &head, int data)
+void LinkedList::add_item_to_beginning_of_list(int data)
 {
-    int linkedListLength{get_linked_list_length(head)};
+    int linkedListLength{get_linked_list_length()};
     LinkedListNode* newNode{nullptr};
     LinkedListNode* placeHolderForOldNodes{nullptr};
 
     if(linkedListLength < 1)
     {
-        create_linked_list_head_or_node(head, 0);
+        create_linked_list_head(0);
         return;
     }
 
         placeHolderForOldNodes = new LinkedListNode();
         placeHolderForOldNodes = head->nextNode;
-        create_linked_list_head_or_node(newNode, data);
-        assign_nodeX_to_point_to_node_y(head, newNode);
-        assign_nodeX_to_point_to_node_y(newNode, placeHolderForOldNodes);
+        LLN::create_linked_list_node(newNode, data);
+        assign_head_to_point_to_node_y(newNode);
+        LLN::assign_nodeX_to_point_to_node_y(newNode, placeHolderForOldNodes);
 
         return;
 }
 
-void add_item_to_end_of_list(LinkedListNode *&head, int data)
+void LinkedList::add_item_to_end_of_list(int data)
 {
-   int linkedListLength{get_linked_list_length(head)};
+   int linkedListLength{get_linked_list_length()};
    LinkedListNode* currentNode{head};
    LinkedListNode* newNode{nullptr};
 
    if(linkedListLength < 1)
    {
-       create_linked_list_head_or_node(head, 0);
+       create_linked_list_head(0);
        return;
    }
     else
@@ -84,16 +94,16 @@ void add_item_to_end_of_list(LinkedListNode *&head, int data)
            currentNode = currentNode->nextNode;
            linkedListLength--;
        }
-       create_linked_list_head_or_node(newNode, data);
-       assign_nodeX_to_point_to_node_y(currentNode, newNode);
+       LLN::create_linked_list_node(newNode, data);
+       LLN::assign_nodeX_to_point_to_node_y(currentNode, newNode);
 
        return;
    }
 }
 
-void assign_nodeX_to_point_to_node_y(LinkedListNode* &nodeX, LinkedListNode* &nodeY)
+void LinkedList::assign_head_to_point_to_node_y(LinkedListNode* &nodeY)
 {
-    if(nodeX == nullptr)
+    if(head == nullptr)
     {
         std::cout << "Error: nodeX has not been given memory yet.\n";
         return;
@@ -105,16 +115,17 @@ void assign_nodeX_to_point_to_node_y(LinkedListNode* &nodeX, LinkedListNode* &no
     }
     else
     {
-        nodeX->nextNode = nodeY;
+        head->nextNode = nodeY;
         return;
     }
 }
 
-void clear_linked_list(LinkedListNode* &head)
+
+void LinkedList::clear_linked_list()
 {
     LinkedListNode* currentNode{head};
     LinkedListNode* nxtNode{nullptr};
-    int listLength{get_linked_list_length(head)};
+    int listLength{get_linked_list_length()};
 
     if(listLength < 1)
     {
@@ -148,15 +159,16 @@ void clear_linked_list(LinkedListNode* &head)
     }
 }
 
-void create_linked_list_head_or_node(LinkedListNode* &head, int data)
+void LinkedList::create_linked_list_head(int data)
 {
     head = new LinkedListNode();
-    head->item = data;
+    item = data;
 }
 
-void remove_all_instances_of_item_from_list(LinkedListNode* head, int data)
+
+void LinkedList::remove_all_instances_of_item_from_list(int data)
 {
-    int listLength{get_linked_list_length(head)};
+    int listLength{get_linked_list_length()};
     LinkedListNode* currentNode{head};
     LinkedListNode* nxtNode{nullptr};
     LinkedListNode* placeHolder{head};
@@ -167,7 +179,7 @@ void remove_all_instances_of_item_from_list(LinkedListNode* head, int data)
         return;
     }
 
-    listLength = get_linked_list_length(head);
+    listLength = get_linked_list_length();
     currentNode = placeHolder->nextNode;
     listLength--;
 
@@ -178,7 +190,7 @@ void remove_all_instances_of_item_from_list(LinkedListNode* head, int data)
         if(currentNode->item == data)
         {
             delete currentNode;
-            assign_nodeX_to_point_to_node_y(placeHolder, nxtNode);
+            LLN::assign_nodeX_to_point_to_node_y(placeHolder, nxtNode);
         }
         else
         {
@@ -194,11 +206,11 @@ void remove_all_instances_of_item_from_list(LinkedListNode* head, int data)
     }
 }
 
-void remove_first_item_in_list(LinkedListNode* &head)
+void LinkedList::remove_first_item_in_list()
 {
     LinkedListNode* currentNode{nullptr};
     LinkedListNode* placeHolder{nullptr};
-    int listLength{get_linked_list_length(head)};
+    int listLength{get_linked_list_length()};
 
     if(listLength < 2)
     {
@@ -216,16 +228,16 @@ void remove_first_item_in_list(LinkedListNode* &head)
         placeHolder = head->nextNode->nextNode;
         head->nextNode = nullptr;
         delete currentNode;
-        assign_nodeX_to_point_to_node_y(head, placeHolder);
+        assign_head_to_point_to_node_y(placeHolder);
     }
     return;
 }
 
-void remove_last_item_in_list(LinkedListNode* &head)
+void LinkedList::remove_last_item_in_list()
 {
     LinkedListNode* currentNode{head};
     LinkedListNode* placeHolder{nullptr};
-    int listLength{get_linked_list_length(head)};
+    int listLength{get_linked_list_length()};
 
     if(listLength < 2)
     {
@@ -248,4 +260,38 @@ void remove_last_item_in_list(LinkedListNode* &head)
         delete currentNode;
     }
     return;
+}
+
+LinkedListNode* LinkedList::getHeadAddress()
+{return head;}
+
+double LinkedList::getHeadItem()
+{return item;}
+
+namespace LLN
+{
+    void create_linked_list_node(LinkedListNode* &newNode, int data)
+    {
+        newNode = new LinkedListNode();
+        newNode->item = data;
+    }
+
+    void assign_nodeX_to_point_to_node_y(LinkedListNode* &nodeX, LinkedListNode* &nodeY)
+    {
+        if(nodeX == nullptr)
+        {
+            std::cout << "Error: nodeX has not been given memory yet.\n";
+            return;
+        }
+        else if (nodeY == nullptr)
+        {
+            std::cout << "Error: nodeY has not been given memory yet.\n";
+            return;
+        }
+        else
+        {
+            nodeX->nextNode = nodeY;
+            return;
+        }
+    }
 }

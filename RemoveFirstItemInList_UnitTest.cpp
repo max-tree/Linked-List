@@ -3,11 +3,11 @@
 
 TEST(RemoveFirstItemInList, WhenListIsOnlyHead_ExpectNoChangeAndErrorMessage)
 {
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
 
-    remove_first_item_in_list(head);
+    linkedList.remove_first_item_in_list();
 
-    int listLength{get_linked_list_length(head)};
+    int listLength{linkedList.get_linked_list_length()};
     int expectedResult{1};
 
     EXPECT_EQ(listLength, expectedResult);
@@ -15,15 +15,15 @@ TEST(RemoveFirstItemInList, WhenListIsOnlyHead_ExpectNoChangeAndErrorMessage)
 
 TEST(RemoveFirstItemInList, WhenListHasOneNode_ExpectOnlyHead)
 {
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
     LinkedListNode* second{nullptr};
 
-    create_linked_list_head_or_node(head, 0);
-    create_linked_list_head_or_node(second, 0);
+    linkedList.create_linked_list_head(0);
+    LLN::create_linked_list_node(second, 0);
 
-    assign_nodeX_to_point_to_node_y(head, second);
-    remove_first_item_in_list(head);
-    int listLength{get_linked_list_length(head)};
+    linkedList.assign_head_to_point_to_node_y(second);
+    linkedList.remove_first_item_in_list();
+    int listLength{linkedList.get_linked_list_length()};
     int expectedResult{1};
 
     EXPECT_EQ(listLength, expectedResult);
@@ -31,25 +31,25 @@ TEST(RemoveFirstItemInList, WhenListHasOneNode_ExpectOnlyHead)
 
 TEST(RemoveFirstItemInList, WhenListIslong_ExpectLengthToDecreaseByOne)
 {
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
     LinkedListNode* second{nullptr};
     LinkedListNode* third{nullptr};
     LinkedListNode* fourth{nullptr};
     LinkedListNode* fifth{nullptr};
 
-    create_linked_list_head_or_node(head, 0);
-    create_linked_list_head_or_node(second, 4);
-    create_linked_list_head_or_node(third, 1);
-    create_linked_list_head_or_node(fourth, 1);
-    create_linked_list_head_or_node(fifth, 2);
+    linkedList.create_linked_list_head(0);
+    LLN::create_linked_list_node(second, 4);
+    LLN::create_linked_list_node(third, 1);
+    LLN::create_linked_list_node(fourth, 1);
+    LLN::create_linked_list_node(fifth, 2);
 
-    assign_nodeX_to_point_to_node_y(head, second);
-    assign_nodeX_to_point_to_node_y(second, third);
-    assign_nodeX_to_point_to_node_y(third, fourth);
-    assign_nodeX_to_point_to_node_y(fourth, fifth);
+    linkedList.assign_head_to_point_to_node_y(second);
+    LLN::assign_nodeX_to_point_to_node_y(second, third);
+    LLN::assign_nodeX_to_point_to_node_y(third, fourth);
+    LLN::assign_nodeX_to_point_to_node_y(fourth, fifth);
 
-    remove_first_item_in_list(head);
-    int listLength{get_linked_list_length(head)};
+    linkedList.remove_first_item_in_list();
+    int listLength{linkedList.get_linked_list_length()};
     int expectedResult{4};
 
     EXPECT_EQ(listLength, expectedResult);

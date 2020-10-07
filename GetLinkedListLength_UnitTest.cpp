@@ -4,36 +4,36 @@
 TEST(LinkedListLength, WhenListIsJustTheHead_Expect1)
 {
     int expectedLinkedListLength{1};
-    LinkedListNode* head{nullptr};
-    create_linked_list_head_or_node(head,0);
+    LinkedList linkedList;
+    linkedList.create_linked_list_head(0);
 
-    EXPECT_EQ(expectedLinkedListLength, get_linked_list_length(head));
-    delete head;
+    EXPECT_EQ(expectedLinkedListLength, linkedList.get_linked_list_length());
+    linkedList.~LinkedList();
 }
 
 TEST(LinkedListLength, WhenListIsMissingTheHeadMemory_ExpectHeadMemoryCreationAnd1)
 {
     int expectedLinkedListLength{1};
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
 
-    EXPECT_EQ(expectedLinkedListLength, get_linked_list_length(head));
-    delete head;
+    EXPECT_EQ(expectedLinkedListLength, linkedList.get_linked_list_length());
+    linkedList.~LinkedList();
 }
 
 TEST(LinkedListLength, WhenListIsTheHeadAndTwoNodes_Expect3)
 {
     int expectedLinkedListLength{3};
-    LinkedListNode* head{nullptr};
+    LinkedList linkedList;
     LinkedListNode* second{nullptr};
     LinkedListNode* third{nullptr};
 
-    create_linked_list_head_or_node(head,0);
-    create_linked_list_head_or_node(second,0);
-    create_linked_list_head_or_node(third,0);
+    linkedList.create_linked_list_head(0);
+    LLN::create_linked_list_node(second, 0);
+    LLN::create_linked_list_node(third, 0);
 
-    assign_nodeX_to_point_to_node_y(head, second);
-    assign_nodeX_to_point_to_node_y(second, third);
+    linkedList.assign_head_to_point_to_node_y(second);
+    LLN::assign_nodeX_to_point_to_node_y(second, third);
 
-    EXPECT_EQ(expectedLinkedListLength, get_linked_list_length(head));
-    delete head;
+    EXPECT_EQ(expectedLinkedListLength, linkedList.get_linked_list_length());
+    linkedList.~LinkedList();
 }
