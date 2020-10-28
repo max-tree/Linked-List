@@ -8,7 +8,7 @@ TEST(AddItemToBeginningOfList, WhenAddingToTheBeginningOfAListThatDoesNotHaveAHe
     LinkedList linkedList;
     linkedList.add_item_to_beginning_of_list(0);
     linkedListLength = linkedList.get_linked_list_length();
-
+//Adding one number should result in a length of 1.
     EXPECT_EQ(expectedLinkedListLength, linkedListLength);
 }
 

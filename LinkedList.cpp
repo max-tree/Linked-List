@@ -16,6 +16,7 @@ int LinkedList::get_linked_list_length()
 
     if(head == nullptr)
     {
+        //So asking the length creates an item in the list?
         create_linked_list_head(0);
     }
 
@@ -103,6 +104,10 @@ void LinkedList::add_item_to_end_of_list(int data)
 
 void LinkedList::assign_head_to_point_to_node_y(LinkedListNode* &nodeY)
 {
+    //It is best practice to not print out warnings.  It is better to return
+    //the warning and let the user decide what to do with it.  If this was used in
+    //Microsoft Word what would you as the user think of this warning?  It wouldn't make
+    //any sense.
     if(head == nullptr)
     {
         std::cout << "Error: nodeX has not been given memory yet.\n";

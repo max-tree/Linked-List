@@ -1,5 +1,6 @@
 #include "LinkedList.hpp"
 #include "gtest/gtest.h"
+//Be sure to remove code duplication.
 
 TEST(RemoveAllInstancesOfItemFromList, WhenRemoving1FromListWithNo1s_ExpectNoChange)
 {

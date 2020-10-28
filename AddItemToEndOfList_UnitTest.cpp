@@ -1,6 +1,7 @@
 #include "LinkedList.hpp"
 #include "gtest/gtest.h"
 
+//There is some code duplication that should be removed.
 TEST(AddItemToEndOfList, WhenAddingToTheEndOfAListThatDoesNotHaveAHeadWithMemory_ExpectHeadToGetMemoryAndLengthOf2)
 {
     int expectedLinkedListLength = {2};
